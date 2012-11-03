@@ -4,6 +4,7 @@ import common.JsonController
 import services.UserService
 import models.UserJson
 import services.Common.ServiceResult
+import play.api.mvc.Action
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,7 +18,7 @@ object Users extends JsonController {
 
     val userService = new UserService
 
-    def getUsers() = {
+    def getUsers() = Action {
       Ok(views.html.userlisting(userService.getUsers))
     }
 

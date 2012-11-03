@@ -25,10 +25,14 @@ class UserService {
   }
 
   val mongo = new MongoClient("mongo.host")
-  lazy val userCollection = mongo.withCollection[MongoCollection]("user")("profiles") {x => x}
+  lazy val userCollection = mongo.withCollection[MongoCollection]("profiles")("users") {x => x}
 
   def getUsers(): List[User] = {
      userCollection.find() map {MongoToUserFormatter(_)} toList
+  }
+
+  def getUserById(userId: String): Option[User] = {
+    userCollection.findOneByID(userId) map {MongoToUserFormatter(_)}
   }
 
   def createUser(user: UserJson) = {
