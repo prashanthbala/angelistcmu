@@ -1,0 +1,25 @@
+@(users: Seq[models.User])
+
+@*********************
+* Displays a list of users on the site *
+*********************@
+
+@import helper.twitterBootstrap._
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Talent</title>
+</head>
+<body>
+
+<h1>Welcome CMU!</h1>
+
+<ul>
+    @users.map { user =>
+    <li>@user.name</li>
+    }
+</ul>
+</body>
+</html>
